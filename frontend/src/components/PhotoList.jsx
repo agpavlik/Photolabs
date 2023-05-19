@@ -5,8 +5,9 @@ import PhotoListItem from './PhotoListItem';
 
 
 const PhotoList = (props) => {
+
   const {photos} = props;
-  const parsedPhotos = Array.isArray(photos) && props.photos.map((photo) => {
+  const parsedPhotos = props.photos.map((photo) => {
     return <PhotoListItem {... photos} key={photos.id}/>;
   });
 
@@ -14,7 +15,8 @@ const PhotoList = (props) => {
   return (
     <ul className="photo-list">
       <li>
-        {parsedPhotos}</li>
+        {parsedPhotos}
+      </li>
     </ul>
   );
 };

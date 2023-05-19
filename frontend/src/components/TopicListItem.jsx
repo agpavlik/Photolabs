@@ -1,16 +1,24 @@
 import React from 'react';
 
-import '../styles/TopicListItem'
+import '../styles/TopicListItem.scss';
+import {useState} from 'react';
 
-const TopicListItem = () => {
-  <div className="topic-list--item">
-    {/* Insert React */}
-  </div>
-}
+const TopicListItem = (props) => {
+
+  const {id, label, link} = props;
+
+  return (
+    <div className="topic-list--item">
+      <a href={link}>
+        <span>{label}</span>
+      </a>
+    </div>
+  );
+};
 
 TopicListItem.defaultProps = {
   id: 1,
   label: 'Nature',
-  link: 'link placeholder' 
-}
-export default TopicListItem
+  link: 'link placeholder'
+};
+export default TopicListItem;
