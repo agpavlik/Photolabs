@@ -9,7 +9,7 @@ const TopicListItem = (props) => {
 
   return (
     <div className="topic-list--item">
-      <a href={link}>
+      <a>
         <span>{label}</span>
       </a>
     </div>
