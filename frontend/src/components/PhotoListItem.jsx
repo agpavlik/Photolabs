@@ -17,7 +17,7 @@ const PhotoListItem = (props, {size = 100}) => {
     <div className="photo-list--item" key={id}>
       <PhotoFavButton handleClick = {handleClick} like = {like}/>
       <img src={props.urls.regular} alt="image" width={size} className="photo-list--image"/>
-      <div className="photo-list--user-detals">
+      <div className="photo-list--user-details">
         <img src={props.urls.thumb} alt="image" className="photo-list--user-profile"/>
         {!hideUserName &&
         <p className="photo-list--user-info">{props.user.name}</p>}

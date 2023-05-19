@@ -15,3 +15,5 @@ const PhotoFavButton = (props) => {
 };
 
 export default PhotoFavButton;
+
+
