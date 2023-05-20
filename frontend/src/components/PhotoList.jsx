@@ -8,7 +8,7 @@ const PhotoList = (props) => {
 
   const {photos} = props;
   const parsedPhotos = props.photos.map((photo) => {
-    return <PhotoListItem {... photo} key={photos.id}/>;
+    return <PhotoListItem {... photo} key={photo.id} dispatch={props.dispatch}/>;
   });
 
 

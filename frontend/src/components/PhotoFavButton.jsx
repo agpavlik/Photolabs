@@ -8,12 +8,10 @@ const PhotoFavButton = (props) => {
   return (
     <div className="photo-list--fav-icon">
       <div className="photo-list--fav-icon-svg" onClick = {props.handleClick}>
-        <FavIcon fill = {props.like === 'on' ? "#C80000" : '#EEEEEE'} width = {22} height = {30}/>
+        <FavIcon fill = {props.like === 'on' ? "#C80000" : '#EEEEEE'} width = {25} height = {30}/>
       </div>
     </div>
   );
 };
 
 export default PhotoFavButton;
-
-

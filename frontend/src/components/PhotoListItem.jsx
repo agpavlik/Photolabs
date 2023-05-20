@@ -11,7 +11,11 @@ const PhotoListItem = (props, {size = 100}) => {
   const {username, imageSource, id, hideUserName} = props;
 
   const [like, setLike] = useState('off');
-  const handleClick = () => setLike(like === 'on' ? 'off' : 'on');
+  const handleClick = () => {
+    props.dispatch(like === 'on' ? 'off' : 'on');
+    setLike(like === 'on' ? 'off' : 'on');
+
+  };
 
   return (
     <div className="photo-list--item" key={id}>

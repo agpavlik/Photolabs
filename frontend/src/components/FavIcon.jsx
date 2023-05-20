@@ -16,7 +16,7 @@ export const FavIcon = ({
         strokeLinecap="round"
         strokeLinejoin="round"/>
       {
-        !!displayAlert &&
+        displayAlert &&
         <circle
           cx="21"
           cy="4"
