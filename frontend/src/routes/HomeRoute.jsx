@@ -19,10 +19,12 @@ const HomeRoute = (props) => {
   }, 0
   );
 
+  // const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="home-route">
       <TopNavigationBar topics={props.topics} count={state}/>
-      <PhotoList photos={props.photos} dispatch={dispatch}/>
+      <PhotoList photos={props.photos} dispatch={dispatch} openModal={props.openModal}/>
     </div>
   );
 };

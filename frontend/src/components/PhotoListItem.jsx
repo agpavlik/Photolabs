@@ -11,18 +11,17 @@ const PhotoListItem = (props, {size = 100}) => {
   const {username, imageSource, id, hideUserName} = props;
 
   const [like, setLike] = useState('off');
-  const handleClick = () => {
+  const onIconClick = () => {
     props.dispatch(like === 'on' ? 'off' : 'on');
     setLike(like === 'on' ? 'off' : 'on');
-
   };
 
   return (
     <div className="photo-list--item" key={id}>
-      <PhotoFavButton handleClick = {handleClick} like = {like}/>
-      <img src={props.urls.regular} alt="image" width={size} className="photo-list--image"/>
+      <PhotoFavButton onIconClick={onIconClick} like = {like}/>
+      <img className="photo-list--image" src={props.urls.regular} alt="image" width={size} onClick={props.openModal}/>
       <div className="photo-list--user-details">
-        <img src={props.urls.thumb} alt="image" className="photo-list--user-profile"/>
+        <img className="photo-list--user-profile" src={props.urls.thumb} alt="image"/>
         {!hideUserName &&
         <p className="photo-list--user-info">{props.user.name}</p>}
         <p className="photo-list--user-location">{props.location.city}, {props.location.country}</p>
