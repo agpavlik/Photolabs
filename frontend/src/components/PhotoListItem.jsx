@@ -16,10 +16,12 @@ const PhotoListItem = (props, {size = 100}) => {
     setLike(like === 'on' ? 'off' : 'on');
   };
 
+
+
   return (
     <div className="photo-list--item" key={id}>
       <PhotoFavButton onIconClick={onIconClick} like = {like}/>
-      <img className="photo-list--image" src={props.urls.regular} alt="image" width={size} onClick={props.openModal}/>
+      <img className="photo-list--image" src={props.urls.regular} alt="image" width={size} onClick={() => props.openModal(props.urls.regular)}/>
       <div className="photo-list--user-details">
         <img className="photo-list--user-profile" src={props.urls.thumb} alt="image"/>
         {!hideUserName &&

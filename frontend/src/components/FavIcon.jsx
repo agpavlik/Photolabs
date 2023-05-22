@@ -21,7 +21,7 @@ export const FavIcon = ({
           cx="21"
           cy="4"
           r="2.75"
-          fill="#FFFF00"
+          fill="#7FFF00"
           stroke="#C80000"
           strokeWidth="0.5"/>
       };

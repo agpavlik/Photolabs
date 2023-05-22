@@ -1,6 +1,10 @@
 import React from 'react';
-
+import PhotoFavButton from '../components/PhotoFavButton';
+import PhotoList from '../components/PhotoList';
+import PhotoListItem from '../components/PhotoListItem';
+import App from '../App';
 import '../styles/PhotoDetailsModal.scss';
+
 
 export const PhotoDetailsModal = (props) => {
 
@@ -23,11 +27,24 @@ export const PhotoDetailsModal = (props) => {
           </defs>
         </svg>
       </button>
+      <div className="photo-details-modal--top-bar">
 
+      </div>
 
-
+      <img className="photo-details-modal--image" src={props.showModal}/>
+      <div className="photo-details-modal--photographer-details">
+      </div>
+      <div className="photo-details-modal--header">
+        <p>Related photos</p>
+      </div>
+      <div className='photo-details-modal--images'>
+        <PhotoList photos={props.photos}/>
+      </div>
     </div>
   );
 };
 
 export default PhotoDetailsModal;
+
+
+//src={props.showModal.urls.regular}
