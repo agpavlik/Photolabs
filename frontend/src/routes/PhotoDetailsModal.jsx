@@ -12,8 +12,6 @@ export const PhotoDetailsModal = (props) => {
     return null;
   }
 
-  console.log('props' , props);
-
   return (
     <div className='photo-details-modal'>
       <button className='photo-details-modal--close-button' onClick={props.closeModal}>
