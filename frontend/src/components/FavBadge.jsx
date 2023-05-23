@@ -3,8 +3,9 @@ import FavIcon from './FavIcon';
 
 import '../styles/FavBadge.scss';
 
-export const FavBadge = ({count, isFavPhotoExist }) => {
+export const FavBadge = ({isFavPhotoExist}) => {
 
+  //const isFavPhotoExist = props.favorites.lenght > 0;
   //const badgeClass = count > 0 ? 'isFavPhotoExist' : 'fav-badge';
 
   return (
@@ -13,7 +14,7 @@ export const FavBadge = ({count, isFavPhotoExist }) => {
         width={30}
         height={20}
         fill="#C80000"
-        displayAlert={count}/>
+        displayAlert={isFavPhotoExist}/>
     </div>
   );
 };

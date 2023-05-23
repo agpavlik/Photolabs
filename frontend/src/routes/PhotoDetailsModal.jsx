@@ -8,9 +8,11 @@ import '../styles/PhotoDetailsModal.scss';
 
 export const PhotoDetailsModal = (props) => {
 
-  if (!props.showModal) {
+  if (!props.modalPhotoId) {
     return null;
   }
+
+  console.log('props' , props);
 
   return (
     <div className='photo-details-modal'>
@@ -27,24 +29,26 @@ export const PhotoDetailsModal = (props) => {
           </defs>
         </svg>
       </button>
-      <div className="photo-details-modal--top-bar">
-
+      <div className="photo-details-modal--top-icon">
+        <PhotoFavButton toggleFavorite={props.toggleFavorite} favorites = {props.favorites} id={props.modalPhotoId}/>
       </div>
+      <img className="photo-details-modal--image" src={props.modalPhoto.urls.regular}/>
+      
+      <div className="photo-details-modal--photographer-details"></div>
 
-      <img className="photo-details-modal--image" src={props.showModal}/>
-      <div className="photo-details-modal--photographer-details">
+      <div className="photo-details-modal--user-details">
+        <img className="photo-details-modal--user-profile" src={props.modalPhoto.urls.small} alt="image"/>
+        <p className="photo-details-modal--user-info">{props.modalPhoto.user.name}</p>
+        <p className="photo-details-modal--user-location">{props.modalPhoto.location.city}, {props.modalPhoto.location.country}</p>
       </div>
       <div className="photo-details-modal--header">
         <p>Related photos</p>
       </div>
       <div className='photo-details-modal--images'>
-        <PhotoList photos={props.photos}/>
+        <PhotoList photos={props.photos} favorites={props.favorites} toggleFavorite={props.toggleFavorite}/>
       </div>
     </div>
   );
 };
 
 export default PhotoDetailsModal;
-
-
-//src={props.showModal.urls.regular}

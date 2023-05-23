@@ -5,10 +5,15 @@ import '../styles/PhotoFavButton.scss';
 
 const PhotoFavButton = (props) => {
 
+  const onClick = () => {
+    props.toggleFavorite(props.id);
+  };
+
+
   return (
     <div className="photo-list--fav-icon">
-      <div className="photo-list--fav-icon-svg" onClick = {props.onIconClick}>
-        <FavIcon fill = {props.like === 'on' ? "#C80000" : '#EEEEEE'} width = {23} height = {30}/>
+      <div className="photo-list--fav-icon-svg" onClick = {onClick}>
+        <FavIcon fill = {props.favorites.includes(props.id) ? "#C80000" : '#EEEEEE'} width = {23} height = {30}/>
       </div>
     </div>
   );
