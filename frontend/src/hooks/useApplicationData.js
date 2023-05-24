@@ -1,6 +1,7 @@
-import {useReducer} from "react";
+import {useReducer, useEffect} from "react";
+import axios from "axios";
 import photos from '../mocks/photos.json';
-import topics from '../mocks/topics.js';
+import topics from '../mocks/topics.json';
 
 export const ACTIONS = {
   OPEN_MODAL: "OPEN_MODAL",
@@ -8,6 +9,8 @@ export const ACTIONS = {
   SET_MODAL_PHOTO_ID: "SET_MODAL_PHOTO_ID",
   TOGGLE_FAVORITE: "TOGGLE_FAVORITE",
   MODAL_PHOTO: "MODAL_PHOTO",
+  ALL_PHOTOS: "ALL_PHOTOS",
+  ALL_TOPICS: "ALL_TOPICS"
 };
 
 const initialState = {
@@ -40,6 +43,20 @@ const reducer = (state, action) => {
       ... state,
       favorites: [...state.favorites, action.payload]
     };
+
+  case "ALL_PHOTOS":
+    return {
+      ...state,
+      photos: action.payload.photos
+    };
+
+  case "ALL_TOPICS":
+    return {
+      ...state,
+      topics: action.payload.topics
+    };
+
+
 
   // case 'MODAL_PHOTO': {
   //   const modalPhoto = state.photos.find((photo) => {
@@ -77,6 +94,28 @@ const useApplicationData = () => {
     return photo.id === state.modalPhotoId;
   });
 
+
+  useEffect(() => {
+    axios
+      .get('/api/photos')
+      .then(res => {
+        dispatch({ type: ACTIONS.ALL_PHOTOS, payload: {photos:res.data}});
+        console.log({photo:res.data});
+      })
+      .catch(e => {
+        console.log("Error fetching photos:", error);
+      });
+
+    axios
+      .get('/api/topics')
+      .then(res => {
+        dispatch({ type: ACTIONS.ALL_TOPICS, payload: {topics:res.data}});
+        console.log({topics:res.data});
+      })
+      .catch(e => {
+        console.log("Error fetching topics:", error);
+      });
+  }, []);
 
 
   return {

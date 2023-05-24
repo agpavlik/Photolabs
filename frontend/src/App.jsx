@@ -5,7 +5,7 @@ import PhotoDetailsModal from './routes/PhotoDetailsModal';
 import './App.scss';
 
 // Note: Rendering a single co mponent to build components in isolation
-const App = (props) => {
+const App = () => {
   
   const {
     photos,
@@ -48,10 +48,6 @@ const App = (props) => {
   // const modalPhoto = photos.find((photo) => {
   //   return photo.id === modalPhotoId;
   // });
-
-
-
- console.log(state)
   
   return (
     <div className="App">

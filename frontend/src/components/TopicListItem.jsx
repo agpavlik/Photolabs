@@ -7,18 +7,18 @@ const TopicListItem = (props) => {
 
   const {id, label, link} = props;
 
+  const topicClick = () => {
+    onClick(id);
+  };
+
   return (
     <div className="topic-list--item">
-      <a>
+      <a href={link} onClick={topicClick}>
         <span>{props.title}</span>
       </a>
     </div>
   );
 };
 
-TopicListItem.defaultProps = {
-  id: 1,
-  label: 'Nature',
-  link: 'link placeholder'
-};
+
 export default TopicListItem;

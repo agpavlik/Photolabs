@@ -9,13 +9,6 @@
 }
 
 .photo-list--image {
-  user-select: none;
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
-}
-
-.photo-list--image {
   border-radius: 8px 8px 0px 0px;
   user-select: none;
   width: 300px;
@@ -27,7 +20,8 @@
   object-fit: cover;
   border-radius: 100%;
   vertical-align: middle;
-  margin-right: 8px;
+  margin-right: 5px;
+  margin-top: 10px;
   width: 40px;
   height: 40px;
 }
@@ -37,17 +31,14 @@
 }
 
 .photo-list--user-info {
-  margin-top: 5px;
+  margin-top: 0;
   font-weight: 700;
   font-size: 12px;
   margin-left: 8px;
-  margin-bottom: 0;
 }
 
 .photo-list--user-location {
-  margin-top: 25px;
-  margin-left: -74px;
   color: #838383;
-  font-size: 12px;
-  margin-bottom: 0;
+  margin: 0;
+
 }

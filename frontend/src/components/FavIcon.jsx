@@ -20,7 +20,7 @@ export const FavIcon = ({
         <circle
           cx="21"
           cy="4"
-          r="2.75"
+          r="3.50"
           fill="#7FFF00"
           stroke="#C80000"
           strokeWidth="0.5"/>
