@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export const FavIcon = ({
   width, height, fill, outlineWidth, stroke, displayAlert
 }) => {

@@ -10,7 +10,8 @@ export const ACTIONS = {
   TOGGLE_FAVORITE: "TOGGLE_FAVORITE",
   MODAL_PHOTO: "MODAL_PHOTO",
   ALL_PHOTOS: "ALL_PHOTOS",
-  ALL_TOPICS: "ALL_TOPICS"
+  ALL_TOPICS: "ALL_TOPICS",
+  GET_PHOTOS_BY_TOPIC: "GET_PHOTOS_BY_TOPIC"
 };
 
 const initialState = {
@@ -18,19 +19,27 @@ const initialState = {
   favorites: [],
   photos: [],
   topics: [],
+  isModalOpen: false,
+  modalPhotoDetails: null,
+};
+
+const modalPhoto = (photos, photoId) => {
+  const modalWindow = photos.find(item => item.id === photoId);
+  return modalWindow;
 };
 
 
 const reducer = (state, action) => {
   switch (action.type) {
-  case 'SET_MODAL_PHOTO_ID': {
+  case "SET_MODAL_PHOTO_ID": {
     return {
       ...state,
-      modalPhotoId: action.payload.modalId
+      isModalOpen: !state.isModalOpen,
+      modalPhotoId: action.payload.modalId,
+      modalPhotoDetails: action.payload.modalId !== null ? modalPhoto(state.photos, action.payload.modalId) : null
     };
   }
-  case 'TOGGLE_FAVORITE': {
-
+  case "TOGGLE_FAVORITE": {
     if (state.favorites.includes(action.payload)) {
       const newFavorites = state.favorites.filter((favorite) => (action.payload !== favorite));
       return {
@@ -45,28 +54,25 @@ const reducer = (state, action) => {
     };
 
   case "ALL_PHOTOS":
+    console.log('all the photots', action.payload.photos);
     return {
       ...state,
       photos: action.payload.photos
     };
 
   case "ALL_TOPICS":
+    console.log('all the topics', action.payload.topics);
     return {
       ...state,
       topics: action.payload.topics
     };
+  
+  case "GET_PHOTOS_BY_TOPIC":
+    return {
+      ...state,
+      photos: action.payload.photos
+    };
 
-
-
-  // case 'MODAL_PHOTO': {
-  //   const modalPhoto = state.photos.find((photo) => {
-  //     return photo.id === action.payload;
-  //   });
-  //   return {
-  //     ...state,
-  //     modalPhoto: modalPhoto
-  //   };
-  // }
   default:
     throw new Error(
       `Tried to reduce with unsupported action type: ${action.type}`
@@ -90,9 +96,18 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.TOGGLE_FAVORITE, payload: photoId});
   };
 
-  const modalPhoto = photos.find((photo) => {
-    return photo.id === state.modalPhotoId;
-  });
+  const getPhotosByTopic = (topicId) => {
+    console.log('topicId', topicId);
+    axios
+      .get(`/api/topics/photos/${topicId}`)
+      .then(res => {
+        console.log('res', res);
+        dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPIC, payload: {photos:res.data}});
+      })
+      .catch(e => {
+        console.log("Error fetching photos by topic:", e);
+      });
+  };
 
 
   useEffect(() => {
@@ -100,25 +115,24 @@ const useApplicationData = () => {
       .get('/api/photos')
       .then(res => {
         dispatch({ type: ACTIONS.ALL_PHOTOS, payload: {photos:res.data}});
-        console.log({photo:res.data});
       })
       .catch(e => {
-        console.log("Error fetching photos:", error);
+        console.log("Error fetching photos:", e);
       });
 
     axios
       .get('/api/topics')
       .then(res => {
         dispatch({ type: ACTIONS.ALL_TOPICS, payload: {topics:res.data}});
-        console.log({topics:res.data});
       })
       .catch(e => {
-        console.log("Error fetching topics:", error);
+        console.log("Error fetching topics:", e);
       });
   }, []);
 
 
   return {
+    getPhotosByTopic,
     toggleFavorite,
     openModal,
     modalPhoto,

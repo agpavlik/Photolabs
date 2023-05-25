@@ -1,12 +1,12 @@
 .photo-details-modal {
   background-color: white;
   box-shadow: 0 0 0 50vmax rgba(0,0,0,.5);
-  position: absolute;
-  top: 55%;
+  position: fixed;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -40%);
-  height: 80%;
-  width: 55%;
+  height: 85%;
+  width: 80%;
   overflow-y: scroll;
   border-radius: 12px;
 }
@@ -63,36 +63,34 @@
 .photo-details-modal--top-icon {
   position: relative;
   margin: 0;
-  padding-top: 25px;
-  padding-left: 25px;
+  padding-top: 10px;
+  padding-left: 40px;
+  max-height: 5px;
 }
 
 .photo-details-modal--user-profile {
   object-fit: cover;
   border-radius: 100%;
   vertical-align: middle;
-  margin-right: 8px;
+  margin-right: 5px;
+  margin-left: 5%;
+  margin-top: 10px;
   width: 40px;
   height: 40px;
 }
 
 .photo-details-modal--user-details {
   display: flex;
-  margin-left: 20px;
 }
 
 .photo-details-modal--user-info {
-  margin-top: 5px;
+  margin-top: 0;
   font-weight: 700;
   font-size: 12px;
-  margin-left: 8px;
-  margin-bottom: 0;
+  margin-left:8px;
 }
 
 .photo-details-modal--user-location {
-  margin-top: 25px;
-  margin-left: -74px;
   color: #838383;
-  font-size: 12px;
-  margin-bottom: 0;
+  margin: 0;
 }

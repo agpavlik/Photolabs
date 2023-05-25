@@ -30,14 +30,15 @@ export const PhotoDetailsModal = (props) => {
       <div className="photo-details-modal--top-icon">
         <PhotoFavButton toggleFavorite={props.toggleFavorite} favorites = {props.favorites} id={props.modalPhotoId}/>
       </div>
-      <img className="photo-details-modal--image" src={props.modalPhoto.urls.regular}/>
-      
-      <div className="photo-details-modal--photographer-details"></div>
-
+      <img className="photo-details-modal--image" src={props.modalPhoto.urls.full}/>
       <div className="photo-details-modal--user-details">
-        <img className="photo-details-modal--user-profile" src={props.modalPhoto.urls.small} alt="image"/>
-        <p className="photo-details-modal--user-info">{props.modalPhoto.user.name}</p>
-        <p className="photo-details-modal--user-location">{props.modalPhoto.location.city}, {props.modalPhoto.location.country}</p>
+        <img className="photo-details-modal--user-profile" src={props.modalPhoto.user.profile} alt="image"/>
+        <div className="photo-details-modal--user-info">
+          <p>{props.modalPhoto.user.name}</p>
+          <div className="photo-details-modal--user-location">
+            <p>{props.modalPhoto.location.city} {props.modalPhoto.location.country}</p>
+          </div>
+        </div>
       </div>
       <div className="photo-details-modal--header">
         <p>Related photos</p>

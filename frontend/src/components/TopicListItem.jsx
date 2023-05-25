@@ -1,19 +1,17 @@
 import React from 'react';
-
 import '../styles/TopicListItem.scss';
-import {useState} from 'react';
+
 
 const TopicListItem = (props) => {
 
-  const {id, label, link} = props;
-
-  const topicClick = () => {
-    onClick(id);
+  // choose the set of photos by topic click
+  const topicOnClick = () => {
+    props.topicClick(props.id);
   };
 
   return (
     <div className="topic-list--item">
-      <a href={link} onClick={topicClick}>
+      <a href={props.link} onClick={topicOnClick}>
         <span>{props.title}</span>
       </a>
     </div>

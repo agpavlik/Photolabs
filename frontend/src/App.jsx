@@ -4,7 +4,7 @@ import HomeRoute from "./routes/HomeRoute";
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
 import './App.scss';
 
-// Note: Rendering a single co mponent to build components in isolation
+
 const App = () => {
   
   const {
@@ -15,58 +15,29 @@ const App = () => {
     closeModal,
     toggleFavorite,
     modalPhoto,
+    getPhotosByTopic
   } = useApplicationData();
-
-
-
-  // const [favorites, setFavorites] = useState([]);
-  // const toggleFavorite = (photoId) => {
-  //   if (favorites.includes(photoId)) {
-  //     console.log('remove');
-  //     const newFavorites = favorites.filter((favorite) => {
-  //       if (photoId === favorite) {
-  //         return false;
-  //       } else {
-  //         return true;
-  //       }
-  //     });
-  //     setFavorites(newFavorites);
-  //     return;
-  //   }
-  //   setFavorites([...favorites, photoId]);
-  // };
-
-  // const [modalPhotoId, setModalPhotoId] = useState(null);
-
-  // const openModal = (photo) => {
-  //   setModalPhotoId(photo);
-  // };
-  // const closeModal = () => {
-  //   setModalPhotoId(null);
-  // };
-
-  // const modalPhoto = photos.find((photo) => {
-  //   return photo.id === modalPhotoId;
-  // });
   
   return (
     <div className="App">
       <HomeRoute
-        photos={photos}
-        topics={topics}
+        photos={state.photos}
+        topics={state.topics}
         openModal={openModal}
         favorites={state.favorites}
         toggleFavorite={toggleFavorite}
+        getPhotosByTopic={getPhotosByTopic}
       />
-      <PhotoDetailsModal
-        photos={photos}
-        topics={topics}
+
+      {state.isModalOpen && <PhotoDetailsModal
+        photos={state.photos}
+        topics={state.topics}
         modalPhotoId={state.modalPhotoId}
         closeModal={closeModal}
         favorites={state.favorites}
         toggleFavorite={toggleFavorite}
-        modalPhoto={modalPhoto}
-      />
+        modalPhoto={state.modalPhotoDetails}
+      />}
     </div>);
 };
 

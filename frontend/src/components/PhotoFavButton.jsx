@@ -1,14 +1,14 @@
 import React, { useCallback, useState } from 'react';
-
 import { FavIcon } from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
+
 const PhotoFavButton = (props) => {
 
+  // Add/remove photo id to array by icon click
   const onClick = () => {
     props.toggleFavorite(props.id);
   };
-
 
   return (
     <div className="photo-list--fav-icon">
