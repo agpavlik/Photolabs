@@ -1,8 +1,6 @@
 import React from 'react';
 import PhotoFavButton from '../components/PhotoFavButton';
 import PhotoList from '../components/PhotoList';
-import PhotoListItem from '../components/PhotoListItem';
-import App from '../App';
 import '../styles/PhotoDetailsModal.scss';
 
 
@@ -44,7 +42,7 @@ export const PhotoDetailsModal = (props) => {
         <p>Related photos</p>
       </div>
       <div className='photo-details-modal--images'>
-        <PhotoList photos={props.photos} favorites={props.favorites} toggleFavorite={props.toggleFavorite}/>
+        <PhotoList photos={props.modalPhoto.similar_photos} favorites={props.favorites} toggleFavorite={props.toggleFavorite}/>
       </div>
     </div>
   );

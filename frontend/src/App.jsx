@@ -8,13 +8,10 @@ import './App.scss';
 const App = () => {
   
   const {
-    photos,
-    topics,
     state,
     openModal,
     closeModal,
     toggleFavorite,
-    modalPhoto,
     getPhotosByTopic
   } = useApplicationData();
   

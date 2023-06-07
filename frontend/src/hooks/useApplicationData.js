@@ -14,73 +14,73 @@ export const ACTIONS = {
   GET_PHOTOS_BY_TOPIC: "GET_PHOTOS_BY_TOPIC"
 };
 
-const initialState = {
-  modalPhotoId: null,
-  favorites: [],
-  photos: [],
-  topics: [],
-  isModalOpen: false,
-  modalPhotoDetails: null,
-};
-
-const modalPhoto = (photos, photoId) => {
-  const modalWindow = photos.find(item => item.id === photoId);
-  return modalWindow;
-};
-
-
-const reducer = (state, action) => {
-  switch (action.type) {
-  case "SET_MODAL_PHOTO_ID": {
-    return {
-      ...state,
-      isModalOpen: !state.isModalOpen,
-      modalPhotoId: action.payload.modalId,
-      modalPhotoDetails: action.payload.modalId !== null ? modalPhoto(state.photos, action.payload.modalId) : null
-    };
-  }
-  case "TOGGLE_FAVORITE": {
-    if (state.favorites.includes(action.payload)) {
-      const newFavorites = state.favorites.filter((favorite) => (action.payload !== favorite));
-      return {
-        ...state,
-        favorites: newFavorites
-      };
-    }
-  }
-    return {
-      ... state,
-      favorites: [...state.favorites, action.payload]
-    };
-
-  case "ALL_PHOTOS":
-    console.log('all the photots', action.payload.photos);
-    return {
-      ...state,
-      photos: action.payload.photos
-    };
-
-  case "ALL_TOPICS":
-    console.log('all the topics', action.payload.topics);
-    return {
-      ...state,
-      topics: action.payload.topics
-    };
-  
-  case "GET_PHOTOS_BY_TOPIC":
-    return {
-      ...state,
-      photos: action.payload.photos
-    };
-
-  default:
-    throw new Error(
-      `Tried to reduce with unsupported action type: ${action.type}`
-    );
-  }
-};
 
 const useApplicationData = () => {
+
+  const initialState = {
+    modalPhotoId: null,
+    favorites: [],
+    photos: [],
+    topics: [],
+    isModalOpen: false,
+    modalPhotoDetails: null,
+  };
+
+  const modalPhoto = (photos, photoId) => {
+    const modalWindow = photos.find(item => item.id === photoId);
+    return modalWindow;
+  };
+  
+  const reducer = (state, action) => {
+    switch (action.type) {
+    case "SET_MODAL_PHOTO_ID": {
+      return {
+        ...state,
+        isModalOpen: !state.isModalOpen,
+        modalPhotoId: action.payload.modalId,
+        modalPhotoDetails: action.payload.modalId !== null ? modalPhoto(state.photos, action.payload.modalId) : null
+      };
+    }
+    case "TOGGLE_FAVORITE": {
+      if (state.favorites.includes(action.payload)) {
+        const newFavorites = state.favorites.filter((favorite) => (action.payload !== favorite));
+        return {
+          ...state,
+          favorites: newFavorites
+        };
+      }
+    }
+      return {
+        ... state,
+        favorites: [...state.favorites, action.payload]
+      };
+  
+    case "ALL_PHOTOS":
+      console.log('all the photots', action.payload.photos);
+      return {
+        ...state,
+        photos: action.payload.photos
+      };
+  
+    case "ALL_TOPICS":
+      console.log('all the topics', action.payload.topics);
+      return {
+        ...state,
+        topics: action.payload.topics
+      };
+    
+    case "GET_PHOTOS_BY_TOPIC":
+      return {
+        ...state,
+        photos: action.payload.photos
+      };
+  
+    default:
+      throw new Error(
+        `Tried to reduce with unsupported action type: ${action.type}`
+      );
+    }
+  };
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
