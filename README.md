@@ -9,16 +9,16 @@ PhotoLabs is a React-based single-page application (SPA) that allows users to vi
 - The navigation will consist of different topics and logo which refreshes the page.
 
 ### Short demovideo
-![Demovideo](/docs/first-page.png)
+![Demovideo](/frontend/public/docs/demo4.gif)
 
 ### The main page with all the photos
-![Main page](/docs/first-page.png)
+![Main page](/frontend/public/docs/MainPage.png)
 
 ### Liked photo and notification in navigation bar
-![Like page](/docs/first-page.png)
+![Like page](/frontend/public/docs/LikePage.png)
 
 ### Extra window (modal) for larger version of photo
-![Modal page](/docs/first-page.png)
+![Modal page](/frontend/public/docs/LargePage.png)
 
 
 ## Setup
